@@ -1,11 +1,47 @@
+<button (click)="showUserForm=!showUserForm" class="btn btn-dark mb-3">Add User</button>
+<div *ngIf="showUserForm" class="card card-body">
+  <h2>Add User</h2>
+  <form (submit)="onSubmit($event)">
+    <div class="form-group">
+      <label>First Name</label>
+      <input (keydown)="fireEvent($event)" type="text" class="form-control" name="firstName">
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input (keydown)="fireEvent($event)" type="text" class="form-control" name="lastName">
+    </div>
+    <div class="form-group">
+      <label>Age</label>
+      <input (keydown)="fireEvent($event)" type="text" class="form-control" name="age">
+    </div>
+    <div class="form-group">
+      <label>Street Address</label>
+      <input (keydown)="fireEvent($event)" type="text" class="form-control" name="street">
+    </div>
+    <div class="form-group">
+      <label>City</label>
+      <input (keydown)="fireEvent($event)" type="text" class="form-control" name="city">
+    </div>
+    <div class="form-group">
+      <label>State</label>
+      <input (keydown)="fireEvent($event)" type="text" class="form-control" name="state">
+    </div>
+    <button (click)="addUser({ firstName: 'Paul', lastName: 'Williams', isActive: true })" [disabled]=!enableAdd
+      class="btn btn-light btn-block mb-3" [ngClass]="currentClasses">Add New User</button>
+  </form>
+</div>
 <h1 class="mx-auto">USERS</h1>
-<button [disabled]=!enableAdd class="btn btn-light btn-block mb-3" [ngClass]="currentClasses">Add New User</button>
 <ul class="list-unstyled" *ngIf=" isLoaded && users?.length > 0; else noUsers">
-  <li class="card card-body mb-2 border-3" *ngFor="let user of users" [class.bg-light]="user.isActive" [style.border-color]="user.isActive ? 'green' : '' ">
+  <li class="card card-body mb-2 border-3" *ngFor="let user of users" [class.bg-light]="user.isActive"
+    [style.border-color]="user.isActive ? 'green' : '' ">
     <div class="row">
-      <div class="col-sm-8">
-        <h3 [ngStyle]="currentStyles">{{ user.firstName }} {{ user.lastName }}</h3>
-        <ul class="list-group" *ngIf="showExtended && user.age && user.address">
+      <div class="col-sm-12">
+        <h3 [ngStyle]="currentStyles">{{ user.firstName }} {{ user.lastName }}
+          <small *ngIf="user.age && user.address" class="float-right"><button class="btn btn-dark"
+              (click)="user.hide = !user.hide"> <i [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i>
+            </button></small>
+        </h3>
+        <ul class="list-group" *ngIf="!user.hide && user.age && user.address">
           <li class="list-group-item">Age: {{ user.age }}</li>
           <li class="list-group-item">Address: {{ user.address.street }}, {{ user.address.city }}</li>
           <li class="list-group-item">Registered Date: {{ user.registered | date }}</li>

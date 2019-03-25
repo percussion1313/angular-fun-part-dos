@@ -12,7 +12,8 @@ export class UsersComponent implements OnInit {
   enableAdd: boolean = true;
   // currentClasses = {};
   // currentStyles = {};
-  
+  showUSerForm: boolean = false;
+
   ngOnInit() {
     
  
@@ -27,7 +28,8 @@ export class UsersComponent implements OnInit {
             state: 'California'
         },
         isActive: true,
-        registered: new Date('02/09/2016 12:30:00')
+        registered: new Date('02/09/2016 12:30:00'),
+        hide: true
     },
     {
       firstName: 'Bill',
@@ -39,8 +41,9 @@ export class UsersComponent implements OnInit {
           state: 'Fake State'
         },
         isActive: false,
-        registered: new Date('11/09/2018 8:13:00')
-      },
+        registered: new Date('11/09/2018 8:13:00'),
+        hide: true
+      }, 
       {
         firstName: 'Tim',
         lastName: 'Hello',
@@ -52,7 +55,8 @@ export class UsersComponent implements OnInit {
           },
 
           isActive: true,
-          registered: new Date('07/23/2016 21:01:00')
+          registered: new Date('07/23/2016 21:01:00'),
+          hide: true
         }
     ]
     this.isLoaded = true;
@@ -86,4 +90,15 @@ export class UsersComponent implements OnInit {
   addUser(user: User) {
     this.users.push(user)
   }
+  
+ onSubmit(e) {
+   console.log('submit')
+
+   e.preventDefault();
+ }
+
+ fireEvent(e) {
+   console.log(e.type);
+   console.log(e.target.value);
+ }
 }

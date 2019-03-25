@@ -9,5 +9,6 @@ export interface User {
 },
     isActive?: boolean,
     balance?: number,
-    registered?: any
+    registered?: any,
+    hide?: boolean
 }
