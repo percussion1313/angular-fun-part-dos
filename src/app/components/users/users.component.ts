@@ -9,13 +9,8 @@ export class UsersComponent implements OnInit {
   user: User = {
     firstName: '',
     lastName: '',
-    age: null,
-    address: {
-      street: '',
-      city: '',
-      state: ''
-    }
-  }
+    email: ''
+  }    
   users: User[];
   showExtended: boolean = true;
   isLoaded: boolean = false
@@ -31,12 +26,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'John',
         lastName: 'Doe',
-        age: 87,
-        address: {
-            street: '123 main st',
-            city: 'Los Angeles',
-            state: 'California'
-        },
+        email: 'johndoe@gmail.com',
         isActive: true,
         registered: new Date('02/09/2016 12:30:00'),
         hide: true
@@ -44,12 +34,7 @@ export class UsersComponent implements OnInit {
     {
       firstName: 'Bill',
       lastName: 'Lastname',
-      age: 33,
-      address: {
-          street: '153 main st',
-          city: 'Fake City',
-          state: 'Fake State'
-        },
+        email: 'billlastname@gmail.com',
         isActive: false,
         registered: new Date('11/09/2018 8:13:00'),
         hide: true
@@ -57,13 +42,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Tim',
         lastName: 'Hello',
-        age: 12,
-        address: {
-            street: '153 main st',
-            city: 'Fake City',
-            state: 'Fake State'
-          },
-
+        email: 'timhello@gmail.com',
           isActive: true,
           registered: new Date('07/23/2016 21:01:00'),
           hide: true
@@ -105,12 +84,7 @@ export class UsersComponent implements OnInit {
     this.user = {
       firstName: '',
     lastName: '',
-    age: null,
-    address: {
-      street: '',
-      city: '',
-      state: ''
-    }
+    email:''
     }
   }
   
@@ -120,8 +94,5 @@ export class UsersComponent implements OnInit {
    e.preventDefault();
  }
 
- fireEvent(e) {
-   console.log(e.type);
-   console.log(e.target.value);
- }
+
 }
