@@ -9,11 +9,12 @@ export class UsersComponent implements OnInit {
   users: User[];
   showExtended: boolean = true;
   isLoaded: boolean = false
+  enableAdd: boolean = true;
   constructor() { }
   
   ngOnInit() {
     
-  setTimeout(() => {
+ 
     this.users = [
       {
         firstName: 'John',
@@ -47,20 +48,15 @@ export class UsersComponent implements OnInit {
         }
     ]
     this.isLoaded = true;
-  }, 2000);
+  
     
 
-    this.showExtended = false; 
-    // this.addUser({
-    //   firstName: 'New',
-    //     lastName: 'User',
-    //     age: 12,
-    //     address: {
-    //         street: '153 main st',
-    //         city: 'Fake City',
-    //         state: 'Fake State'
-    //       }
-    // })
+    this.showExtended = true; 
+    this.addUser({
+      firstName: 'New',
+        lastName: 'User',
+        age: 12
+    })
 
   }
 
